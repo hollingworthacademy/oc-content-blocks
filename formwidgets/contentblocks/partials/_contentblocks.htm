@@ -1,0 +1,78 @@
+<?php if ($this->previewMode): ?>
+
+    <h1>Preview Mode</h1>
+
+<?php else: ?>
+    <!-- Start of ContentBlocks -->
+
+    <div class="contentblocks"
+        id="<?= $this->getId() ?>"
+        data-control="contentblocks"
+        data-block-container="#<?= $this->getId('container') ?>"
+        data-block-handle=".<?= $this->getId('handle') ?>">
+
+        <div id="<?= $this->getId('container') ?>"
+            class="contentblocks-container">
+            <?php foreach ($formWidgets as $widget): ?>
+                <?= $this->makePartial('contentblocks_block', [
+                    'widget' => $widget
+                ]) ?>
+            <?php endforeach ?>
+        </div>
+
+        <div>
+            <a href="#<?= $this->getId('dialog') ?>"
+                class="oc-icon-plus btn btn-primary"                
+                data-toggle="modal">
+                Add Block
+            </a>
+        </div>
+
+        <div id="<?= $this->getId('dialog') ?>"
+            class="control popup modal fade"
+            tabindex="-1"
+            data-contentblocks-dialog
+            role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-hidden="true">
+                            &times;
+                        </a>
+                        <h4 class="modal-title">Add Block</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <?php foreach ($blockDetails as $type => $details): ?>
+                            <a href="#"
+                                data-request="<?= $this->getEventHandler('onAddBlock') ?>"
+                                data-request-data="type: '<?= $type ?>'"
+                                data-dismiss="modal"
+                                data-contentblocks-add>
+                                <div class="block-icon oc-<?= $details['icon'] ?? 'icon-leaf' ?>"></div>
+                                <div class="block-details">
+                                    <h4><?= $details['name'] ?></h4>
+                                    <p><?= $details['description'] ?></p>
+                                </div>
+                            </a>
+                        <?php endforeach ?>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button"
+                            data-dismiss="modal"                            
+                            class="btn btn-default">
+                            Cancel
+                        </button>
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+    </div>
+
+    <!-- End of ContentBlocks -->
+<?php endif ?>

@@ -1,0 +1,24 @@
+<div class="contentblocks-block">
+    <div class="<?= $this->getId('handle') ?> contentblocks-handle">
+        <?= $widget->config->blockDetails['name'] ?>
+        <a href="#"
+            class="close"
+            data-request="<?= $this->getEventHandler('onRemoveBlock') ?>"
+            data-request-confirm="Are you sure you want to remove this block?"
+            data-contentblocks-remove>
+            &times;
+        </a>
+    </div>
+
+    <div id="<?= $widget->getId('block') ?>"
+        class="contentblocks-form"
+        data-control="formwidget"
+        data-refresh-handler="<?= $this->getEventHandler('onRefresh') ?>">
+        <?php foreach ($widget->getFields() as $field): ?>
+            <?= $widget->renderField($field) ?>
+            <input type="hidden"
+                name="<?= $widget->arrayName ?>[type]"
+                value="<?= $widget->config->blockType ?>">
+        <?php endforeach ?>
+    </div>
+</div>

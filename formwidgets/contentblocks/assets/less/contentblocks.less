@@ -1,0 +1,65 @@
+@import "../../../../../../../modules/backend/assets/less/core/boot.less";
+
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.contentblocks-container {
+    margin-bottom: 0.5em;
+
+    & > .placeholder {
+        height: 2em;
+        border-radius: 3px;
+        border: 2px dashed @input-border;
+        margin-bottom: 0.5em;
+    }
+}
+
+.contentblocks-block {
+    border: 1px solid @input-border;
+    border-radius: 3px;
+    padding: 1.5em 1.25em 0 1.25em !important;
+    background-color: @color-panel-light;
+    margin-bottom: 0.5em;
+    overflow: hidden;
+
+    &.dragged {
+        position: absolute;
+        opacity: 0.5;
+        z-index: 2000;
+    }
+}
+
+.contentblocks-handle {
+    padding: 0.5em 1.25em;
+    background-color: @input-border;
+    color: @gray-dark;
+    margin: -1.5em -1.25em 1em -1.25em !important;
+}
+
+.contentblocks-form {
+    .clearfix;
+}
+
+[data-contentblocks-dialog] {
+    .modal-body {
+        max-height: 75vh;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+
+        .block-icon {
+            font-size: 5em;
+        }
+
+        [data-contentblocks-add] {
+            width: 50%;
+            text-align: center;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
