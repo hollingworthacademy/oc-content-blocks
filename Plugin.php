@@ -32,7 +32,7 @@ class Plugin extends PluginBase
     public function boot()
     {
         CombineAssets::registerCallback(function ($combiner) {
-            $combiner->registerBundle('$/hollingworth/contentblocks/formwidgets/contentblocks/assets/less/contentblocks.less');
+            $combiner->registerBundle(__DIR__.'/formwidgets/contentblocks/assets/less/contentblocks.less');
         });
     }
 

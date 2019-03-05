@@ -2,10 +2,9 @@
     <div class="<?= $this->getId('handle') ?> contentblocks-handle">
         <?= $widget->config->blockDetails['name'] ?>
         <a href="#"
-            class="close"
+            class="close contentblocks-remove"
             data-request="<?= $this->getEventHandler('onRemoveBlock') ?>"
-            data-request-confirm="Are you sure you want to remove this block?"
-            data-contentblocks-remove>
+            data-request-confirm="Are you sure you want to remove this block?">
             &times;
         </a>
     </div>

@@ -24,14 +24,14 @@
             nested: false,
         })
 
-        this.$el.on('ajaxDone', '> [data-contentblocks-dialog] [data-contentblocks-add]', this.proxy(this.onAddBlock))
-        this.$el.on('ajaxDone', '> .contentblocks-container > .contentblocks-block > .contentblocks-handle > [data-contentblocks-remove]', this.proxy(this.onRemoveBlock))
+        this.$el.on('ajaxDone', '> .contentblocks-dialog .contentblocks-add', this.proxy(this.onAddBlock))
+        this.$el.on('ajaxDone', '> .contentblocks-container > .contentblocks-block > .contentblocks-handle > .contentblocks-remove', this.proxy(this.onRemoveBlock))
         this.$el.one('dispose-control', this.proxy(this.dispose))        
     }
 
     ContentBlocks.prototype.dispose = function () {
-        this.$el.off('ajaxDone', '> [data-contentblocks-dialog] [data-contentblocks-add]', this.proxy(this.onAddBlock))
-        this.$el.off('ajaxDone', '> .contentblocks-container > .contentblocks-block > .contentblocks-handle > [data-contentblocks-remove]', this.proxy(this.onRemoveBlock))
+        this.$el.off('ajaxDone', '> .contentblocks-dialog .contentblocks-add', this.proxy(this.onAddBlock))
+        this.$el.off('ajaxDone', '> .contentblocks-container > .contentblocks-block > .contentblocks-handle > .contentblocks-remove', this.proxy(this.onRemoveBlock))
         this.$el.off('dispose-control', this.proxy(this.dispose))
         this.$el.removeData('oc.ContentBlocks')
 

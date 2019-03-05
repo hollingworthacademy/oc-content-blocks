@@ -22,16 +22,15 @@
 
         <div>
             <a href="#<?= $this->getId('dialog') ?>"
-                class="oc-icon-plus btn btn-primary"                
+                class="oc-icon-plus btn btn-default contentblocks-show-dialog"
                 data-toggle="modal">
-                Add Block
+                Add Content Block
             </a>
         </div>
 
         <div id="<?= $this->getId('dialog') ?>"
-            class="control popup modal fade"
+            class="control popup modal fade contentblocks-dialog"
             tabindex="-1"
-            data-contentblocks-dialog
             role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -42,16 +41,16 @@
                             aria-hidden="true">
                             &times;
                         </a>
-                        <h4 class="modal-title">Add Block</h4>
+                        <h4 class="modal-title">Content Blocks</h4>
                     </div>
 
                     <div class="modal-body">
                         <?php foreach ($blockDetails as $type => $details): ?>
                             <a href="#"
+                                class="contentblocks-add"
                                 data-request="<?= $this->getEventHandler('onAddBlock') ?>"
                                 data-request-data="type: '<?= $type ?>'"
-                                data-dismiss="modal"
-                                data-contentblocks-add>
+                                data-dismiss="modal">
                                 <div class="block-icon oc-<?= $details['icon'] ?? 'icon-leaf' ?>"></div>
                                 <div class="block-details">
                                     <h4><?= $details['name'] ?></h4>

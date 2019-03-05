@@ -1,14 +1,15 @@
 body.dragging,
 body.dragging * {cursor:move !important}
 .contentblocks-container {margin-bottom:0.5em}
-.contentblocks-container >.placeholder {height:2em;border-radius:3px;border:2px dashed #d1d6d9;margin-bottom:0.5em}
+.contentblocks-container >.placeholder {height:4em;border-radius:3px;border:2px dashed #d1d6d9;margin-bottom:0.5em}
 .contentblocks-block {border:1px solid #d1d6d9;border-radius:3px;padding:1.5em 1.25em 0 1.25em !important;background-color:#ecf0f1;margin-bottom:0.5em;overflow:hidden}
 .contentblocks-block.dragged {position:absolute;opacity:0.5;z-index:2000}
-.contentblocks-handle {padding:0.5em 1.25em;background-color:#d1d6d9;color:#333;margin:-1.5em -1.25em 1em -1.25em !important}
+.contentblocks-handle {padding:0.5em 1.25em;background-color:#d1d6d9;color:#333;margin:-1.5em -1.25em 1em -1.25em !important;cursor:move}
 .contentblocks-form:before,
 .contentblocks-form:after {content:" ";display:table}
 .contentblocks-form:after {clear:both}
-[data-contentblocks-dialog] .modal-body {max-height:75vh;overflow-y:auto;display:flex;flex-wrap:wrap;align-content:flex-start}
-[data-contentblocks-dialog] .modal-body .block-icon {font-size:5em}
-[data-contentblocks-dialog] .modal-body [data-contentblocks-add] {width:50%;text-align:center}
-[data-contentblocks-dialog] .modal-body [data-contentblocks-add]:hover {text-decoration:none}
+.contentblocks-show-dialog {text-align:center;width:100%}
+.contentblocks-dialog .modal-body {max-height:75vh;overflow-y:auto;display:flex;flex-wrap:wrap;align-content:flex-start}
+.contentblocks-dialog .modal-body .block-icon {font-size:5em}
+.contentblocks-dialog .modal-body .contentblocks-add {width:50%;text-align:center}
+.contentblocks-dialog .modal-body .contentblocks-add:hover {text-decoration:none}

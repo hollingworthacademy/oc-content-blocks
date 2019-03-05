@@ -8,7 +8,7 @@ body.dragging, body.dragging * {
     margin-bottom: 0.5em;
 
     & > .placeholder {
-        height: 2em;
+        height: 4em;
         border-radius: 3px;
         border: 2px dashed @input-border;
         margin-bottom: 0.5em;
@@ -35,13 +35,19 @@ body.dragging, body.dragging * {
     background-color: @input-border;
     color: @gray-dark;
     margin: -1.5em -1.25em 1em -1.25em !important;
+    cursor: move;
 }
 
 .contentblocks-form {
     .clearfix;
 }
 
-[data-contentblocks-dialog] {
+.contentblocks-show-dialog {
+    text-align: center;
+    width: 100%;
+}
+
+.contentblocks-dialog {
     .modal-body {
         max-height: 75vh;
         overflow-y: auto;
@@ -53,7 +59,7 @@ body.dragging, body.dragging * {
             font-size: 5em;
         }
 
-        [data-contentblocks-add] {
+        .contentblocks-add {
             width: 50%;
             text-align: center;
 
