@@ -9,7 +9,8 @@
         id="<?= $this->getId() ?>"
         data-control="contentblocks"
         data-block-container="#<?= $this->getId('container') ?>"
-        data-block-handle=".<?= $this->getId('handle') ?>">
+        data-block-handle=".<?= $this->getId('handle') ?>"
+        data-add-handler="<?= $this->getEventHandler('onAddBlock') ?>">
 
         <div id="<?= $this->getId('container') ?>"
             class="contentblocks-container">
@@ -22,55 +23,12 @@
 
         <div>
             <a href="#<?= $this->getId('dialog') ?>"
-                class="oc-icon-plus btn btn-default contentblocks-show-dialog"
-                data-toggle="modal">
+                class="oc-icon-plus btn btn-default btn-block contentblocks-show-dialog"
+                data-control="popup"
+                data-handler="<?= $this->getEventHandler('onLoadPopup') ?>">
                 Add Content Block
             </a>
         </div>
-
-        <div id="<?= $this->getId('dialog') ?>"
-            class="control popup modal fade contentblocks-dialog"
-            tabindex="-1"
-            role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <a href="#"
-                            class="close"
-                            data-dismiss="modal"
-                            aria-hidden="true">
-                            &times;
-                        </a>
-                        <h4 class="modal-title">Content Blocks</h4>
-                    </div>
-
-                    <div class="modal-body">
-                        <?php foreach ($blockDetails as $type => $details): ?>
-                            <a href="#"
-                                class="contentblocks-add"
-                                data-request="<?= $this->getEventHandler('onAddBlock') ?>"
-                                data-request-data="type: '<?= $type ?>'"
-                                data-dismiss="modal">
-                                <div class="block-icon oc-<?= $details['icon'] ?? 'icon-leaf' ?>"></div>
-                                <div class="block-details">
-                                    <h4><?= $details['name'] ?></h4>
-                                    <p><?= $details['description'] ?></p>
-                                </div>
-                            </a>
-                        <?php endforeach ?>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button"
-                            data-dismiss="modal"                            
-                            class="btn btn-default">
-                            Cancel
-                        </button>
-                    </div>
-                </div>                
-            </div>
-        </div>
-
     </div>
 
     <!-- End of ContentBlocks -->

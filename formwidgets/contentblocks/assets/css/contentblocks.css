@@ -8,8 +8,7 @@ body.dragging * {cursor:move !important}
 .contentblocks-form:before,
 .contentblocks-form:after {content:" ";display:table}
 .contentblocks-form:after {clear:both}
-.contentblocks-show-dialog {text-align:center;width:100%}
-.contentblocks-dialog .modal-body {max-height:75vh;overflow-y:auto;display:flex;flex-wrap:wrap;align-content:flex-start}
-.contentblocks-dialog .modal-body .block-icon {font-size:5em}
-.contentblocks-dialog .modal-body .contentblocks-add {width:50%;text-align:center}
-.contentblocks-dialog .modal-body .contentblocks-add:hover {text-decoration:none}
+.contentblocks-popup .modal-body {max-height:75vh;overflow-y:auto;display:flex;flex-wrap:wrap;align-content:flex-start}
+.contentblocks-popup .modal-body .block-icon {font-size:4em}
+.contentblocks-popup .modal-body .contentblocks-add {width:50%;text-align:center}
+.contentblocks-popup .modal-body .contentblocks-add:hover {text-decoration:none}

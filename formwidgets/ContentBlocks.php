@@ -45,7 +45,6 @@ class ContentBlocks extends FormWidgetBase
         $this->vars['value'] = $this->getLoadValue();
         $this->vars['model'] = $this->model;
         $this->vars['formWidgets'] = $this->formWidgets;
-        $this->vars['blockDetails'] = ContentBlockManager::instance()->listDetails();
     }
 
     /**
@@ -90,6 +89,13 @@ class ContentBlocks extends FormWidgetBase
     // AJAX Handlers
     //
 
+    public function onLoadPopup()
+    {
+        return $this->makePartial('contentblocks_popup', [
+            'blocks' => ContentBlockManager::instance()->listDetails()
+        ]);
+    }
+
     public function onAddBlock()
     {
         $type   = post('type');
@@ -105,5 +111,10 @@ class ContentBlocks extends FormWidgetBase
     public function onRemoveBlock()
     {
 
+    }
+
+    public function onRefresh()
+    {
+        
     }
 }

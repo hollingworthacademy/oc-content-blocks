@@ -1,15 +1,17 @@
-<div class="contentblocks-block">
+<div class="contentblocks-block"
+    id="<?= $widget->getId('block') ?>">
     <div class="<?= $this->getId('handle') ?> contentblocks-handle">
         <?= $widget->config->blockDetails['name'] ?>
         <a href="#"
             class="close contentblocks-remove"
             data-request="<?= $this->getEventHandler('onRemoveBlock') ?>"
-            data-request-confirm="Are you sure you want to remove this block?">
+            data-request-confirm="Are you sure you want to remove this block?"
+            data-request-success="$('#<?= $this->getId() ?>').contentblocks('removeBlock', '#<?= $widget->getId('block') ?>')">
             &times;
         </a>
     </div>
 
-    <div id="<?= $widget->getId('block') ?>"
+    <div
         class="contentblocks-form"
         data-control="formwidget"
         data-refresh-handler="<?= $this->getEventHandler('onRefresh') ?>">

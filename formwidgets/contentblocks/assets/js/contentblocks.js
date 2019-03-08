@@ -3,9 +3,10 @@
         BaseProto = Base.prototype
 
     var ContentBlocks = function (element, options) {
-        this.$el     = $(element)
-        this.options = options || {}
-        this.$items  = $(options.blockContainer, this.$el)
+        this.$el        = $(element)
+        this.$container = this.$el.find('.contentblocks-container:first-child')
+        this.options    = options || {}
+        this.$items     = $(options.blockContainer, this.$el)
 
         $.oc.foundation.controlUtils.markDisposable(element)
         Base.call(this)
@@ -24,14 +25,10 @@
             nested: false,
         })
 
-        this.$el.on('ajaxDone', '> .contentblocks-dialog .contentblocks-add', this.proxy(this.onAddBlock))
-        this.$el.on('ajaxDone', '> .contentblocks-container > .contentblocks-block > .contentblocks-handle > .contentblocks-remove', this.proxy(this.onRemoveBlock))
         this.$el.one('dispose-control', this.proxy(this.dispose))        
     }
 
     ContentBlocks.prototype.dispose = function () {
-        this.$el.off('ajaxDone', '> .contentblocks-dialog .contentblocks-add', this.proxy(this.onAddBlock))
-        this.$el.off('ajaxDone', '> .contentblocks-container > .contentblocks-block > .contentblocks-handle > .contentblocks-remove', this.proxy(this.onRemoveBlock))
         this.$el.off('dispose-control', this.proxy(this.dispose))
         this.$el.removeData('oc.ContentBlocks')
 
@@ -42,27 +39,36 @@
         BaseProto.dispose.call(this)
     }
 
-    ContentBlocks.prototype.onAddBlock = function (ev, context, data) {
-        var $container = this.$el.find('> .contentblocks-container')
-        $(data.result).appendTo($container).hide().slideDown(250)
+    ContentBlocks.prototype.addBlock = function (type) {
+        var $container = this.$container
+
+        this.$el.request(this.options.addHandler, {
+            data: {
+                type: type
+            },
+            success: function (data) {
+                $(data.result).appendTo($container).hide().slideDown(250)
+                this.success(data)
+            }
+        })
     }
 
-    ContentBlocks.prototype.onRemoveBlock = function (ev) {
-        $(ev.target).closest('.contentblocks-block').slideUp(250, function () {
+    ContentBlocks.prototype.removeBlock = function (blockId) {
+        $(blockId, this.$container).slideUp(250, function () {
             $(this).remove()
         })
     }
 
     ContentBlocks.DEFAULTS = {
-        
+        addHandler: null
     }
 
     // jQuery Plugin
     // =============
 
-    var old = $.fn.ContentBlocks
+    var old = $.fn.contentblocks
 
-    $.fn.ContentBlocks = function (option) {
+    $.fn.contentblocks = function (option) {
         var args = Array.prototype.slice.call(arguments, 1), items, result
 
         items = this.each(function () {
@@ -78,17 +84,17 @@
         return result ? result : items
     }
 
-    $.fn.ContentBlocks.Constructor = ContentBlocks
+    $.fn.contentblocks.Constructor = ContentBlocks
 
-    $.fn.ContentBlocks.noConflict = function () {
-        $.fn.ContentBlocks = old
+    $.fn.contentblocks.noConflict = function () {
+        $.fn.contentblocks = old
         return this
     }
 
     // Data API
     // ========
     $(document).render(function () {
-        $('[data-control="contentblocks"]').ContentBlocks()
+        $('[data-control="contentblocks"]').contentblocks()
     })
 
 }(window.jQuery);
