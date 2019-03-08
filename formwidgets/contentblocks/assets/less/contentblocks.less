@@ -42,20 +42,24 @@ body.dragging, body.dragging * {
     .clearfix;
 }
 
+.contentblocks-add {
+    text-align: center;
+}
+
 .contentblocks-popup {
     .modal-body {
         max-height: 75vh;
         overflow-y: auto;
         display: flex;
         flex-wrap: wrap;
-        align-content: flex-start;
+        justify-content: space-between;
 
-        .block-icon {
+        .contentblocks-icon {
             font-size: 4em;
         }
 
         .contentblocks-add {
-            width: 50%;
+            width: 30%;
             text-align: center;
 
             &:hover {

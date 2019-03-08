@@ -22,11 +22,10 @@
         </div>
 
         <div>
-            <a href="#<?= $this->getId('dialog') ?>"
-                class="oc-icon-plus btn btn-default btn-block contentblocks-show-dialog"
-                data-control="popup"
-                data-handler="<?= $this->getEventHandler('onLoadPopup') ?>">
-                Add Content Block
+            <a data-control="popup"
+                data-handler="<?= $this->getEventHandler('onLoadPopup') ?>"
+                class="contentblocks-add btn btn-default btn-block">                
+                <span class="icon-plus"></span> Add Content Block
             </a>
         </div>
     </div>
